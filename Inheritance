@@ -1,0 +1,51 @@
+class Monster:
+  def __init__(self, hitpoints=1, strength=1, dexterity=1):
+    self.hitpoints = hitpoints
+    self.strength = strength
+    self.dexterity = dexterity
+
+  def basic_attack(self):
+    return self.strength * self.dexterity
+
+# Inheritance ---------------------------------------------------------------
+
+class Goblin(Monster):
+  def __init__(self, looting, hitpoints=5):
+    self.looting = looting
+    super().__init__(hitpoints=hitpoints, strength=3, dexterity=2)
+
+  def goblin_attack(self):
+      return self.strength * self.dexterity + self.looting
+      
+      
+monster = Monster()
+goblin = Goblin(10)
+goblin2 = Goblin(10, 100)
+
+
+
+__________________________________________________________________________
+
+ goblin.hitpoints
+5
+ goblin2.hitpoints
+100
+ goblin == goblin2
+False
+ goblin.goblin_attack()
+16
+ goblin.basic_attack()
+6
+ monster.basic_attack()
+1
+ monster.goblin_attack()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Monster' object has no attribute 'goblin_attack'
+
+
+
+
+___________________________________________________________________________
+
+https://repl.it/languages/python3    #good python editor
